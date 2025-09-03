@@ -34,7 +34,7 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
 
       return {
         userId: participant.user_id,
-        displayName: participant.profiles?.display_name || "Unknown User",
+        displayName: participant.profiles?.display_name || "Usuário Desconhecido",
         avatarUrl: participant.profiles?.avatar_url,
         ...scoreData,
       }
@@ -62,11 +62,11 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
   const getRankBadge = (rank: number) => {
     switch (rank) {
       case 1:
-        return <Badge className="bg-yellow-500 hover:bg-yellow-600">1st Place</Badge>
+        return <Badge className="bg-yellow-500 hover:bg-yellow-600">1º Lugar</Badge>
       case 2:
-        return <Badge className="bg-gray-400 hover:bg-gray-500">2nd Place</Badge>
+        return <Badge className="bg-gray-400 hover:bg-gray-500">2º Lugar</Badge>
       case 3:
-        return <Badge className="bg-amber-600 hover:bg-amber-700">3rd Place</Badge>
+        return <Badge className="bg-amber-600 hover:bg-amber-700">3º Lugar</Badge>
       default:
         return <Badge variant="outline">#{rank}</Badge>
     }
@@ -94,6 +94,17 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
     }
   }
 
+  const getTrendText = (trend: string) => {
+    switch (trend) {
+      case "improving":
+        return "melhorando"
+      case "declining":
+        return "piorando"
+      default:
+        return "estável"
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div className="grid md:grid-cols-4 gap-4">
@@ -101,7 +112,7 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
           <CardContent className="p-4 text-center">
             <Users className="w-8 h-8 text-blue-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-gray-900">{competitionStats.totalParticipants}</div>
-            <p className="text-sm text-gray-500">Total Participants</p>
+            <p className="text-sm text-gray-500">Total de Participantes</p>
           </CardContent>
         </Card>
 
@@ -109,7 +120,7 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
           <CardContent className="p-4 text-center">
             <BarChart3 className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-gray-900">{competitionStats.averageImprovement.toFixed(1)}%</div>
-            <p className="text-sm text-gray-500">Avg Improvement</p>
+            <p className="text-sm text-gray-500">Melhoria Média</p>
           </CardContent>
         </Card>
 
@@ -117,7 +128,7 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
           <CardContent className="p-4 text-center">
             <Trophy className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
             <div className="text-2xl font-bold text-gray-900">{competitionStats.topImprovement.toFixed(1)}%</div>
-            <p className="text-sm text-gray-500">Best Result</p>
+            <p className="text-sm text-gray-500">Melhor Resultado</p>
           </CardContent>
         </Card>
 
@@ -127,7 +138,7 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
             <div className="text-2xl font-bold text-gray-900">
               {(competitionStats.consistencyRate * 100).toFixed(0)}%
             </div>
-            <p className="text-sm text-gray-500">Consistency</p>
+            <p className="text-sm text-gray-500">Consistência</p>
           </CardContent>
         </Card>
       </div>
@@ -136,14 +147,14 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Trophy className="w-5 h-5" />
-            <span>Leaderboard</span>
+            <span>Classificação</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           {rankedParticipants.length === 0 ? (
             <div className="text-center py-8">
               <Trophy className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-500">No participants yet</p>
+              <p className="text-gray-500">Nenhum participante ainda</p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -184,14 +195,14 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
                           <div className="flex items-center space-x-1">
                             {getTrendIcon(participant.trend)}
                             <span className={`text-xs font-medium ${getTrendColor(participant.trend)}`}>
-                              {participant.trend}
+                              {getTrendText(participant.trend)}
                             </span>
                           </div>
                           <span className="text-gray-300">•</span>
                           <div className="flex items-center space-x-1">
                             <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                             <span className="text-xs text-gray-500">
-                              {(participant.consistency * 100).toFixed(0)}% consistent
+                              {(participant.consistency * 100).toFixed(0)}% consistente
                             </span>
                           </div>
                         </div>
@@ -213,7 +224,7 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
                       <p className="text-xs text-gray-500">
                         {participant.currentValue
                           ? `${participant.currentValue} ${isWeightLoss ? "kg" : "cm"}`
-                          : "No data"}
+                          : "Sem dados"}
                       </p>
                       {participant.measurements.length > 0 && (
                         <div className="w-20">
@@ -235,7 +246,7 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
       {rankedParticipants.length >= 3 && (
         <Card className="border-0 shadow-md">
           <CardHeader>
-            <CardTitle>Top Performers</CardTitle>
+            <CardTitle>Melhores Desempenhos</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-3 gap-4">
@@ -264,7 +275,7 @@ export function CompetitionRanking({ competition, participants }: CompetitionRan
                     <div className="flex items-center justify-center space-x-1 text-xs text-gray-500">
                       <span>{participant.score.toFixed(0)} pts</span>
                       <span>•</span>
-                      <span>{participant.measurements.length} logs</span>
+                      <span>{participant.measurements.length} registros</span>
                     </div>
                   </div>
                 )

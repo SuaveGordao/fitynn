@@ -21,21 +21,21 @@ export default async function AuthErrorPage({
             <div className="mx-auto w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
               <AlertCircle className="w-8 h-8 text-red-600" />
             </div>
-            <CardTitle className="text-2xl">Authentication Error</CardTitle>
+            <CardTitle className="text-2xl">Erro de Autenticação</CardTitle>
           </CardHeader>
           <CardContent className="text-center space-y-4">
             {params?.error ? (
               <p className="text-sm text-red-600 bg-red-50 p-3 rounded-md border border-red-200">{params.error}</p>
             ) : (
-              <p className="text-sm text-gray-600">An unexpected error occurred during authentication.</p>
+              <p className="text-sm text-gray-600">Ocorreu um erro inesperado durante a autenticação.</p>
             )}
             <div className="pt-4 space-x-4">
               <Link href="/auth/login" className="text-emerald-600 hover:text-emerald-700 font-medium text-sm">
-                Try Again
+                Tentar Novamente
               </Link>
               <span className="text-gray-300">•</span>
               <Link href="/auth/signup" className="text-emerald-600 hover:text-emerald-700 font-medium text-sm">
-                Sign Up
+                Cadastrar-se
               </Link>
             </div>
           </CardContent>

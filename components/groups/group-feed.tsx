@@ -84,27 +84,27 @@ export function GroupFeed({ groupId, posts, userId }: GroupFeedProps) {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <MessageSquare className="w-5 h-5" />
-            <span>Share with Your Group</span>
+            <span>Compartilhe com seu Grupo</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleCreatePost} className="space-y-4">
             <Textarea
-              placeholder="Share your thoughts, progress, or motivate your group..."
+              placeholder="Compartilhe seus pensamentos, progresso ou motive seu grupo..."
               value={newPost}
               onChange={(e) => setNewPost(e.target.value)}
               rows={3}
               maxLength={500}
             />
             <div className="flex justify-between items-center">
-              <p className="text-xs text-gray-500">{newPost.length}/500 characters</p>
+              <p className="text-xs text-gray-500">{newPost.length}/500 caracteres</p>
               <Button
                 type="submit"
                 disabled={isPosting || !newPost.trim()}
                 className="bg-emerald-600 hover:bg-emerald-700"
               >
                 <Send className="w-4 h-4 mr-2" />
-                {isPosting ? "Posting..." : "Post"}
+                {isPosting ? "Publicando..." : "Publicar"}
               </Button>
             </div>
           </form>
@@ -120,8 +120,8 @@ export function GroupFeed({ groupId, posts, userId }: GroupFeedProps) {
                 <MessageSquare className="w-8 h-8 text-gray-400" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">No Posts Yet</h3>
-                <p className="text-gray-600">Be the first to share something with your group!</p>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Nenhuma Publicação Ainda</h3>
+                <p className="text-gray-600">Seja o primeiro a compartilhar algo com seu grupo!</p>
               </div>
             </CardContent>
           </Card>
@@ -148,7 +148,7 @@ export function GroupFeed({ groupId, posts, userId }: GroupFeedProps) {
                           {post.competition_id && (
                             <Badge variant="secondary" className="bg-blue-100 text-blue-700">
                               <Trophy className="w-3 h-3 mr-1" />
-                              Competition Update
+                              Atualização da Competição
                             </Badge>
                           )}
                         </div>
@@ -182,7 +182,7 @@ export function GroupFeed({ groupId, posts, userId }: GroupFeedProps) {
                         </Button>
                         <Button variant="ghost" size="sm" className="flex items-center space-x-1 text-gray-600">
                           <MessageSquare className="w-4 h-4" />
-                          <span>Comment</span>
+                          <span>Comentar</span>
                         </Button>
                       </div>
                     </div>

@@ -27,13 +27,13 @@ export default function SignUpPage() {
     setError(null)
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match")
+      setError("As senhas não coincidem")
       setIsLoading(false)
       return
     }
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters")
+      setError("A senha deve ter pelo menos 6 caracteres")
       setIsLoading(false)
       return
     }
@@ -63,22 +63,22 @@ export default function SignUpPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-emerald-600 mb-2">Fitynn</h1>
-          <p className="text-gray-600">Start your fitness competition journey</p>
+          <p className="text-gray-600">Comece sua jornada de competições fitness</p>
         </div>
 
         <Card className="shadow-lg border-0">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center">Create Account</CardTitle>
-            <CardDescription className="text-center">Join fitness competitions with friends</CardDescription>
+            <CardTitle className="text-2xl text-center">Criar Conta</CardTitle>
+            <CardDescription className="text-center">Participe de competições fitness com amigos</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSignUp} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="displayName">Display Name</Label>
+                <Label htmlFor="displayName">Nome de Exibição</Label>
                 <Input
                   id="displayName"
                   type="text"
-                  placeholder="Your name"
+                  placeholder="Seu nome"
                   required
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
@@ -86,11 +86,11 @@ export default function SignUpPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">E-mail</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder="seu@email.com"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -98,11 +98,11 @@ export default function SignUpPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Senha</Label>
                 <Input
                   id="password"
                   type="password"
-                  placeholder="At least 6 characters"
+                  placeholder="Pelo menos 6 caracteres"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -110,11 +110,11 @@ export default function SignUpPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Label htmlFor="confirmPassword">Confirmar Senha</Label>
                 <Input
                   id="confirmPassword"
                   type="password"
-                  placeholder="Confirm your password"
+                  placeholder="Confirme sua senha"
                   required
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
@@ -125,14 +125,14 @@ export default function SignUpPage() {
                 <div className="p-3 text-sm text-red-600 bg-red-50 rounded-md border border-red-200">{error}</div>
               )}
               <Button type="submit" className="w-full h-11 bg-emerald-600 hover:bg-emerald-700" disabled={isLoading}>
-                {isLoading ? "Creating account..." : "Create Account"}
+                {isLoading ? "Criando conta..." : "Criar Conta"}
               </Button>
             </form>
 
             <div className="mt-6 text-center text-sm">
-              Already have an account?{" "}
+              Já tem uma conta?{" "}
               <Link href="/auth/login" className="text-emerald-600 hover:text-emerald-700 font-medium">
-                Sign in
+                Entrar
               </Link>
             </div>
           </CardContent>

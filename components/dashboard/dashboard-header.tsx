@@ -50,14 +50,14 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
                 <h1 className="text-2xl font-bold text-emerald-600">Fitynn</h1>
               </div>
               <div className="hidden sm:block">
-                <p className="text-gray-600">Welcome back, {displayName}!</p>
+                <p className="text-gray-600">Bem-vindo de volta, {displayName}!</p>
               </div>
             </div>
 
             <div className="flex items-center space-x-4">
               <Button onClick={() => setShowCreateGroup(true)} className="bg-emerald-600 hover:bg-emerald-700">
                 <Plus className="w-4 h-4 mr-2" />
-                Create Group
+                Criar Grupo
               </Button>
 
               <DropdownMenu>
@@ -81,12 +81,12 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <Settings className="mr-2 h-4 w-4" />
-                    Settings
+                    Configurações
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleSignOut}>
                     <LogOut className="mr-2 h-4 w-4" />
-                    Sign out
+                    Sair
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

@@ -52,10 +52,10 @@ export function GroupHeader({ group, userRole, memberCount }: GroupHeaderProps) 
                 <div className="flex items-center space-x-4 text-sm text-gray-500">
                   <div className="flex items-center space-x-1">
                     <Users className="w-4 h-4" />
-                    <span>{memberCount} members</span>
+                    <span>{memberCount} membros</span>
                   </div>
                   <span>•</span>
-                  <span>Created by {group.profiles.display_name}</span>
+                  <span>Criado por {group.profiles.display_name}</span>
                   <span>•</span>
                   <span>{new Date(group.created_at).toLocaleDateString()}</span>
                 </div>
@@ -69,14 +69,14 @@ export function GroupHeader({ group, userRole, memberCount }: GroupHeaderProps) 
                 className="border-emerald-200 text-emerald-700 hover:bg-emerald-50"
               >
                 <UserPlus className="w-4 h-4 mr-2" />
-                Invite Members
+                Convidar Membros
               </Button>
 
               {isAdmin && (
                 <Link href={`/groups/${group.id}/settings`}>
                   <Button variant="outline">
                     <Settings className="w-4 h-4 mr-2" />
-                    Settings
+                    Configurações
                   </Button>
                 </Link>
               )}

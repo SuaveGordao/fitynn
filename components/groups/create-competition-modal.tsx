@@ -88,16 +88,16 @@ export function CreateCompetitionModal({ open, onOpenChange, groupId }: CreateCo
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Create New Competition</DialogTitle>
-          <DialogDescription>Set up a new fitness competition for your group members.</DialogDescription>
+          <DialogTitle>Criar Nova Competição</DialogTitle>
+          <DialogDescription>Configure uma nova competição fitness para os membros do seu grupo.</DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Competition Name</Label>
+            <Label htmlFor="name">Nome da Competição</Label>
             <Input
               id="name"
-              placeholder="e.g., 30-Day Weight Loss Challenge"
+              placeholder="ex: Desafio de Perda de Peso de 30 Dias"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -106,10 +106,10 @@ export function CreateCompetitionModal({ open, onOpenChange, groupId }: CreateCo
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="description">Description (Optional)</Label>
+            <Label htmlFor="description">Descrição (Opcional)</Label>
             <Textarea
               id="description"
-              placeholder="Describe the competition goals and rules..."
+              placeholder="Descreva os objetivos e regras da competição..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={3}
@@ -119,31 +119,31 @@ export function CreateCompetitionModal({ open, onOpenChange, groupId }: CreateCo
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="type">Competition Type</Label>
+              <Label htmlFor="type">Tipo de Competição</Label>
               <Select value={type} onValueChange={(value: "weight_loss" | "measurement") => setType(value)}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="weight_loss">Weight Loss</SelectItem>
-                  <SelectItem value="measurement">Body Measurement</SelectItem>
+                  <SelectItem value="weight_loss">Perda de Peso</SelectItem>
+                  <SelectItem value="measurement">Medida Corporal</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             {type === "measurement" && (
               <div className="space-y-2">
-                <Label htmlFor="measurementType">Measurement Type</Label>
+                <Label htmlFor="measurementType">Tipo de Medida</Label>
                 <Select value={measurementType} onValueChange={setMeasurementType}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select measurement" />
+                    <SelectValue placeholder="Selecione a medida" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="waist">Waist</SelectItem>
-                    <SelectItem value="chest">Chest</SelectItem>
-                    <SelectItem value="arms">Arms</SelectItem>
-                    <SelectItem value="legs">Legs</SelectItem>
-                    <SelectItem value="hips">Hips</SelectItem>
+                    <SelectItem value="waist">Cintura</SelectItem>
+                    <SelectItem value="chest">Peito</SelectItem>
+                    <SelectItem value="arms">Braços</SelectItem>
+                    <SelectItem value="legs">Pernas</SelectItem>
+                    <SelectItem value="hips">Quadris</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -152,7 +152,7 @@ export function CreateCompetitionModal({ open, onOpenChange, groupId }: CreateCo
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="startDate">Start Date</Label>
+              <Label htmlFor="startDate">Data de Início</Label>
               <Input
                 id="startDate"
                 type="date"
@@ -164,7 +164,7 @@ export function CreateCompetitionModal({ open, onOpenChange, groupId }: CreateCo
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="endDate">End Date</Label>
+              <Label htmlFor="endDate">Data de Término</Label>
               <Input
                 id="endDate"
                 type="date"
@@ -180,7 +180,7 @@ export function CreateCompetitionModal({ open, onOpenChange, groupId }: CreateCo
 
           <div className="flex justify-end space-x-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)} disabled={isLoading}>
-              Cancel
+              Cancelar
             </Button>
             <Button
               type="submit"
@@ -189,7 +189,7 @@ export function CreateCompetitionModal({ open, onOpenChange, groupId }: CreateCo
               }
               className="bg-emerald-600 hover:bg-emerald-700"
             >
-              {isLoading ? "Creating..." : "Create Competition"}
+              {isLoading ? "Criando..." : "Criar Competição"}
             </Button>
           </div>
         </form>

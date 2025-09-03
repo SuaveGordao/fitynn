@@ -66,8 +66,8 @@ export function CompetitionFeed({ competition, posts, userId }: CompetitionFeedP
     const now = new Date()
     const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60))
 
-    if (diffInHours < 1) return "Just now"
-    if (diffInHours < 24) return `${diffInHours}h ago`
+    if (diffInHours < 1) return "Agora mesmo"
+    if (diffInHours < 24) return `${diffInHours}h atrás`
     return date.toLocaleDateString()
   }
 
@@ -78,27 +78,27 @@ export function CompetitionFeed({ competition, posts, userId }: CompetitionFeedP
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <MessageSquare className="w-5 h-5" />
-            <span>Share Your Progress</span>
+            <span>Compartilhe seu Progresso</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleCreatePost} className="space-y-4">
             <Textarea
-              placeholder="Share your progress, motivation, or encourage others..."
+              placeholder="Compartilhe seu progresso, motivação ou encoraje outros..."
               value={newPost}
               onChange={(e) => setNewPost(e.target.value)}
               rows={3}
               maxLength={500}
             />
             <div className="flex justify-between items-center">
-              <p className="text-xs text-gray-500">{newPost.length}/500 characters</p>
+              <p className="text-xs text-gray-500">{newPost.length}/500 caracteres</p>
               <Button
                 type="submit"
                 disabled={isPosting || !newPost.trim()}
                 className="bg-emerald-600 hover:bg-emerald-700"
               >
                 <Send className="w-4 h-4 mr-2" />
-                {isPosting ? "Posting..." : "Post"}
+                {isPosting ? "Publicando..." : "Publicar"}
               </Button>
             </div>
           </form>
@@ -114,8 +114,8 @@ export function CompetitionFeed({ competition, posts, userId }: CompetitionFeedP
                 <MessageSquare className="w-8 h-8 text-gray-400" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">No Posts Yet</h3>
-                <p className="text-gray-600">Be the first to share your progress and motivate others!</p>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Nenhuma Publicação Ainda</h3>
+                <p className="text-gray-600">Seja o primeiro a compartilhar seu progresso e motivar outros!</p>
               </div>
             </CardContent>
           </Card>
@@ -134,11 +134,13 @@ export function CompetitionFeed({ competition, posts, userId }: CompetitionFeedP
                   <div className="flex-1 space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2">
-                        <p className="font-medium text-gray-900">{post.profiles?.display_name || "Unknown User"}</p>
+                        <p className="font-medium text-gray-900">
+                          {post.profiles?.display_name || "Usuário Desconhecido"}
+                        </p>
                         {post.measurements && (
                           <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">
                             <Camera className="w-3 h-3 mr-1" />
-                            Progress Update
+                            Atualização de Progresso
                           </Badge>
                         )}
                       </div>
@@ -154,7 +156,7 @@ export function CompetitionFeed({ competition, posts, userId }: CompetitionFeedP
                           {competition.type === "weight_loss" ? (
                             <div className="flex items-center space-x-2">
                               <Scale className="w-4 h-4 text-emerald-600" />
-                              <span className="text-sm font-medium">Weight: {post.measurements.weight} kg</span>
+                              <span className="text-sm font-medium">Peso: {post.measurements.weight} kg</span>
                             </div>
                           ) : (
                             <div className="flex items-center space-x-2">
@@ -170,7 +172,7 @@ export function CompetitionFeed({ competition, posts, userId }: CompetitionFeedP
                           <div className="mt-3">
                             <img
                               src={post.measurements.photo_url || "/placeholder.svg"}
-                              alt="Progress photo"
+                              alt="Foto de progresso"
                               className="rounded-lg max-w-sm max-h-64 object-cover"
                             />
                           </div>
@@ -183,7 +185,7 @@ export function CompetitionFeed({ competition, posts, userId }: CompetitionFeedP
                       <div className="mt-3">
                         <img
                           src={post.photo_url || "/placeholder.svg"}
-                          alt="Post photo"
+                          alt="Foto da publicação"
                           className="rounded-lg max-w-sm max-h-64 object-cover"
                         />
                       </div>

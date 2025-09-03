@@ -16,16 +16,16 @@ export interface ParticipantScore {
   percentageChange: number
   score: number
   rank: number
-  trend: "improving" | "declining" | "stable"
+  trend: "melhorando" | "piorando" | "estavel"
   consistency: number
   measurements: MeasurementData[]
 }
 
 export class CompetitionScoring {
-  private competitionType: "weight_loss" | "measurement"
+  private competitionType: "perda_peso" | "medicao"
   private measurementType?: string
 
-  constructor(competitionType: "weight_loss" | "measurement", measurementType?: string) {
+  constructor(competitionType: "perda_peso" | "medicao", measurementType?: string) {
     this.competitionType = competitionType
     this.measurementType = measurementType
   }
@@ -42,7 +42,7 @@ export class CompetitionScoring {
         absoluteChange: 0,
         percentageChange: 0,
         score: 0,
-        trend: "stable",
+        trend: "estavel",
         consistency: 0,
         measurements: [],
       }
@@ -62,14 +62,14 @@ export class CompetitionScoring {
 
     // Trend analysis
     const trend = this.analyzeTrend(measurements)
-    if (trend === "improving") {
+    if (trend === "melhorando") {
       score += 10
-    } else if (trend === "declining") {
+    } else if (trend === "piorando") {
       score -= 5
     }
 
     // Measurement type specific bonuses
-    if (this.competitionType === "measurement") {
+    if (this.competitionType === "medicao") {
       score = this.applyMeasurementTypeBonus(score, percentageChange)
     }
 
@@ -107,8 +107,8 @@ export class CompetitionScoring {
   }
 
   // Analyze improvement trend
-  private analyzeTrend(measurements: MeasurementData[]): "improving" | "declining" | "stable" {
-    if (measurements.length < 3) return "stable"
+  private analyzeTrend(measurements: MeasurementData[]): "melhorando" | "piorando" | "estavel" {
+    if (measurements.length < 3) return "estavel"
 
     const recent = measurements.slice(-3)
     const values = recent.map((m) => m.current)
@@ -121,22 +121,22 @@ export class CompetitionScoring {
       else if (values[i] > values[i - 1]) decliningCount++
     }
 
-    if (improvingCount > decliningCount) return "improving"
-    if (decliningCount > improvingCount) return "declining"
-    return "stable"
+    if (improvingCount > decliningCount) return "melhorando"
+    if (decliningCount > improvingCount) return "piorando"
+    return "estavel"
   }
 
   // Apply measurement type specific scoring bonuses
   private applyMeasurementTypeBonus(baseScore: number, percentageChange: number): number {
     const bonusMultipliers: Record<string, number> = {
-      waist: 1.2, // Waist reduction is highly valued
-      chest: 1.0, // Standard scoring
-      arms: 0.9, // Slightly lower as it's easier to reduce
-      legs: 1.1, // Good indicator of overall fitness
-      hips: 1.15, // Important for health metrics
+      cintura: 1.2, // Redução da cintura é altamente valorizada
+      peito: 1.0, // Pontuação padrão
+      bracos: 0.9, // Ligeiramente menor pois é mais fácil de reduzir
+      pernas: 1.1, // Bom indicador de fitness geral
+      quadris: 1.15, // Importante para métricas de saúde
     }
 
-    const multiplier = bonusMultipliers[this.measurementType || "chest"] || 1.0
+    const multiplier = bonusMultipliers[this.measurementType || "peito"] || 1.0
     return baseScore * multiplier
   }
 

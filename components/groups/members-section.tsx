@@ -75,9 +75,9 @@ export function MembersSection({ members, groupId, userRole }: MembersSectionPro
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">Members</h2>
+        <h2 className="text-2xl font-bold text-gray-900">Membros</h2>
         <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-          {members.length} members
+          {members.length} membros
         </Badge>
       </div>
 
@@ -85,7 +85,7 @@ export function MembersSection({ members, groupId, userRole }: MembersSectionPro
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Users className="w-5 h-5" />
-            <span>Group Members</span>
+            <span>Membros do Grupo</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -113,7 +113,7 @@ export function MembersSection({ members, groupId, userRole }: MembersSectionPro
                         </Badge>
                       )}
                     </div>
-                    <p className="text-sm text-gray-500">Joined {new Date(member.joined_at).toLocaleDateString()}</p>
+                    <p className="text-sm text-gray-500">Entrou em {new Date(member.joined_at).toLocaleDateString()}</p>
                   </div>
                 </div>
 
@@ -127,7 +127,7 @@ export function MembersSection({ members, groupId, userRole }: MembersSectionPro
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem onClick={() => handleRoleChange(member.id, "admin")}>
                         <Shield className="mr-2 h-4 w-4" />
-                        Make Admin
+                        Tornar Admin
                       </DropdownMenuItem>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
@@ -135,7 +135,7 @@ export function MembersSection({ members, groupId, userRole }: MembersSectionPro
                         className="text-red-600 focus:text-red-600"
                       >
                         <UserMinus className="mr-2 h-4 w-4" />
-                        Remove Member
+                        Remover Membro
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>

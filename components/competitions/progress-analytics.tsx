@@ -49,6 +49,17 @@ export function ProgressAnalytics({ userMeasurements, competition, initialValue 
   ) // Every 3 days
   const consistencyScore = expectedMeasurements > 0 ? Math.min(100, (chartData.length / expectedMeasurements) * 100) : 0
 
+  const getTrendText = (trend: string) => {
+    switch (trend) {
+      case "improving":
+        return "Melhorando"
+      case "declining":
+        return "Piorando"
+      default:
+        return "Estável"
+    }
+  }
+
   return (
     <div className="space-y-6">
       {/* Key Metrics */}
@@ -59,7 +70,7 @@ export function ProgressAnalytics({ userMeasurements, competition, initialValue 
               {totalChange > 0 ? "-" : "+"}
               {Math.abs(totalChange).toFixed(1)}
             </div>
-            <p className="text-sm text-gray-500">{isWeightLoss ? "kg" : "cm"} change</p>
+            <p className="text-sm text-gray-500">{isWeightLoss ? "kg" : "cm"} de mudança</p>
           </CardContent>
         </Card>
 
@@ -69,7 +80,7 @@ export function ProgressAnalytics({ userMeasurements, competition, initialValue 
               {percentageChange > 0 ? "-" : "+"}
               {Math.abs(percentageChange).toFixed(1)}%
             </div>
-            <p className="text-sm text-gray-500">Percentage</p>
+            <p className="text-sm text-gray-500">Porcentagem</p>
           </CardContent>
         </Card>
 
@@ -84,14 +95,14 @@ export function ProgressAnalytics({ userMeasurements, competition, initialValue 
                 <Target className="w-6 h-6 text-gray-500" />
               )}
             </div>
-            <p className="text-sm text-gray-500 capitalize">{trend}</p>
+            <p className="text-sm text-gray-500">{getTrendText(trend)}</p>
           </CardContent>
         </Card>
 
         <Card className="border-0 shadow-md">
           <CardContent className="p-4 text-center">
             <div className="text-2xl font-bold text-purple-600">{consistencyScore.toFixed(0)}%</div>
-            <p className="text-sm text-gray-500">Consistency</p>
+            <p className="text-sm text-gray-500">Consistência</p>
           </CardContent>
         </Card>
       </div>
@@ -102,7 +113,7 @@ export function ProgressAnalytics({ userMeasurements, competition, initialValue 
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
               <TrendingDown className="w-5 h-5" />
-              <span>Progress Over Time</span>
+              <span>Progresso ao Longo do Tempo</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -113,10 +124,10 @@ export function ProgressAnalytics({ userMeasurements, competition, initialValue 
                   <XAxis dataKey="day" />
                   <YAxis />
                   <Tooltip
-                    labelFormatter={(value) => `Day ${value}`}
+                    labelFormatter={(value) => `Dia ${value}`}
                     formatter={(value: any, name) => [
                       `${value} ${isWeightLoss ? "kg" : "cm"}`,
-                      isWeightLoss ? "Weight" : "Measurement",
+                      isWeightLoss ? "Peso" : "Medida",
                     ]}
                   />
                   <Line
@@ -139,7 +150,7 @@ export function ProgressAnalytics({ userMeasurements, competition, initialValue 
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
               <BarChart className="w-5 h-5" />
-              <span>Weekly Changes</span>
+              <span>Mudanças Semanais</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -152,7 +163,7 @@ export function ProgressAnalytics({ userMeasurements, competition, initialValue 
                   <Tooltip
                     formatter={(value: any) => [
                       `${value > 0 ? "-" : "+"}${Math.abs(value).toFixed(1)} ${isWeightLoss ? "kg" : "cm"}`,
-                      "Change",
+                      "Mudança",
                     ]}
                   />
                   <Bar dataKey="change" fill="#3b82f6" />
@@ -168,7 +179,7 @@ export function ProgressAnalytics({ userMeasurements, competition, initialValue 
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Award className="w-5 h-5" />
-            <span>Achievements</span>
+            <span>Conquistas</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -176,24 +187,24 @@ export function ProgressAnalytics({ userMeasurements, competition, initialValue 
             {percentageChange >= 5 && (
               <div className="text-center p-4 bg-yellow-50 rounded-lg border border-yellow-200">
                 <Award className="w-8 h-8 text-yellow-600 mx-auto mb-2" />
-                <p className="font-medium text-yellow-800">5% Milestone</p>
-                <p className="text-sm text-yellow-600">Great progress!</p>
+                <p className="font-medium text-yellow-800">Marco de 5%</p>
+                <p className="text-sm text-yellow-600">Ótimo progresso!</p>
               </div>
             )}
 
             {consistencyScore >= 80 && (
               <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <Zap className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                <p className="font-medium text-blue-800">Consistency Star</p>
-                <p className="text-sm text-blue-600">Regular tracker!</p>
+                <p className="font-medium text-blue-800">Estrela da Consistência</p>
+                <p className="text-sm text-blue-600">Registros regulares!</p>
               </div>
             )}
 
             {chartData.length >= 10 && (
               <div className="text-center p-4 bg-emerald-50 rounded-lg border border-emerald-200">
                 <Calendar className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
-                <p className="font-medium text-emerald-800">Dedicated Logger</p>
-                <p className="text-sm text-emerald-600">10+ measurements!</p>
+                <p className="font-medium text-emerald-800">Registrador Dedicado</p>
+                <p className="text-sm text-emerald-600">10+ medições!</p>
               </div>
             )}
           </div>

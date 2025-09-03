@@ -88,8 +88,10 @@ export function InviteMemberModal({ open, onOpenChange, groupId, groupName }: In
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Invite Member</DialogTitle>
-          <DialogDescription>Send an invitation to join "{groupName}" to someone via email.</DialogDescription>
+          <DialogTitle>Convidar Membro</DialogTitle>
+          <DialogDescription>
+            Envie um convite para participar de "{groupName}" para alguém via e-mail.
+          </DialogDescription>
         </DialogHeader>
 
         {success ? (
@@ -99,17 +101,17 @@ export function InviteMemberModal({ open, onOpenChange, groupId, groupName }: In
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Invitation Sent!</h3>
-            <p className="text-gray-600">The invitation has been sent successfully.</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Convite Enviado!</h3>
+            <p className="text-gray-600">O convite foi enviado com sucesso.</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email Address</Label>
+              <Label htmlFor="email">Endereço de E-mail</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="friend@example.com"
+                placeholder="amigo@exemplo.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -122,14 +124,14 @@ export function InviteMemberModal({ open, onOpenChange, groupId, groupName }: In
 
             <div className="flex justify-end space-x-2">
               <Button type="button" variant="outline" onClick={() => onOpenChange(false)} disabled={isLoading}>
-                Cancel
+                Cancelar
               </Button>
               <Button
                 type="submit"
                 disabled={isLoading || !email.trim()}
                 className="bg-emerald-600 hover:bg-emerald-700"
               >
-                {isLoading ? "Sending..." : "Send Invitation"}
+                {isLoading ? "Enviando..." : "Enviar Convite"}
               </Button>
             </div>
           </form>

@@ -111,13 +111,13 @@ export function CompetitionDashboard({
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Calendar className="w-5 h-5" />
-            <span>Competition Progress</span>
+            <span>Progresso da Competição</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between text-sm">
             <span>
-              Day {Math.min(daysPassed, totalDays)} of {totalDays}
+              Dia {Math.min(daysPassed, totalDays)} de {totalDays}
             </span>
             <Badge
               variant="secondary"
@@ -129,7 +129,7 @@ export function CompetitionDashboard({
                     : "bg-gray-100 text-gray-700"
               }
             >
-              {status === "active" ? "Active" : status === "upcoming" ? "Upcoming" : "Completed"}
+              {status === "active" ? "Ativa" : status === "upcoming" ? "Em Breve" : "Concluída"}
             </Badge>
           </div>
           <Progress value={progress} className="h-2" />
@@ -147,19 +147,19 @@ export function CompetitionDashboard({
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 {isWeightLoss ? <Scale className="w-5 h-5" /> : <Target className="w-5 h-5" />}
-                <span>Log {isWeightLoss ? "Weight" : "Measurement"}</span>
+                <span>Registrar {isWeightLoss ? "Peso" : "Medida"}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleLogMeasurement} className="space-y-4">
                 {isWeightLoss ? (
                   <div className="space-y-2">
-                    <Label htmlFor="weight">Weight (kg)</Label>
+                    <Label htmlFor="weight">Peso (kg)</Label>
                     <Input
                       id="weight"
                       type="number"
                       step="0.1"
-                      placeholder="e.g., 70.5"
+                      placeholder="ex: 70,5"
                       value={weight}
                       onChange={(e) => setWeight(e.target.value)}
                       required
@@ -172,7 +172,7 @@ export function CompetitionDashboard({
                       id="measurement"
                       type="number"
                       step="0.1"
-                      placeholder="e.g., 85.5"
+                      placeholder="ex: 85,5"
                       value={measurementValue}
                       onChange={(e) => setMeasurementValue(e.target.value)}
                       required
@@ -181,7 +181,7 @@ export function CompetitionDashboard({
                 )}
 
                 <div className="space-y-2">
-                  <Label htmlFor="photo">Photo (Optional)</Label>
+                  <Label htmlFor="photo">Foto (Opcional)</Label>
                   <Input
                     id="photo"
                     type="file"
@@ -196,7 +196,7 @@ export function CompetitionDashboard({
                   className="w-full bg-emerald-600 hover:bg-emerald-700"
                 >
                   <Camera className="w-4 h-4 mr-2" />
-                  {isLogging ? "Logging..." : "Log Measurement"}
+                  {isLogging ? "Registrando..." : "Registrar Medida"}
                 </Button>
               </form>
             </CardContent>
@@ -207,7 +207,7 @@ export function CompetitionDashboard({
         {userParticipation && (
           <Card className="border-0 shadow-md">
             <CardHeader>
-              <CardTitle>Your Progress</CardTitle>
+              <CardTitle>Seu Progresso</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="text-center">
@@ -215,23 +215,23 @@ export function CompetitionDashboard({
                   {isWeightLoss
                     ? userParticipation.initial_weight
                       ? `${userParticipation.initial_weight} kg`
-                      : "No initial weight"
+                      : "Sem peso inicial"
                     : userParticipation.initial_measurement
                       ? `${userParticipation.initial_measurement} cm`
-                      : "No initial measurement"}
+                      : "Sem medida inicial"}
                 </div>
-                <p className="text-sm text-gray-500">Starting {isWeightLoss ? "weight" : "measurement"}</p>
+                <p className="text-sm text-gray-500">{isWeightLoss ? "Peso" : "Medida"} inicial</p>
               </div>
 
               <div className="flex items-center justify-center space-x-4 text-sm">
                 <div className="flex items-center space-x-1 text-emerald-600">
                   <TrendingDown className="w-4 h-4" />
-                  <span>Goal: Reduce</span>
+                  <span>Meta: Reduzir</span>
                 </div>
               </div>
 
               <div className="text-center text-xs text-gray-500">
-                Joined {new Date(userParticipation.joined_at).toLocaleDateString()}
+                Participou em {new Date(userParticipation.joined_at).toLocaleDateString()}
               </div>
             </CardContent>
           </Card>
@@ -240,25 +240,25 @@ export function CompetitionDashboard({
         {/* Competition Stats */}
         <Card className="border-0 shadow-md">
           <CardHeader>
-            <CardTitle>Competition Stats</CardTitle>
+            <CardTitle>Estatísticas da Competição</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-4 text-center">
               <div>
                 <div className="text-2xl font-bold text-gray-900">{participants.length}</div>
-                <p className="text-sm text-gray-500">Participants</p>
+                <p className="text-sm text-gray-500">Participantes</p>
               </div>
               <div>
                 <div className="text-2xl font-bold text-gray-900">{totalDays}</div>
-                <p className="text-sm text-gray-500">Days Total</p>
+                <p className="text-sm text-gray-500">Dias Totais</p>
               </div>
             </div>
 
             <div className="text-center">
               <div className="text-lg font-semibold text-emerald-600">
-                {isWeightLoss ? "Weight Loss" : `${competition.measurement_type} Reduction`}
+                {isWeightLoss ? "Perda de Peso" : `Redução ${competition.measurement_type}`}
               </div>
-              <p className="text-sm text-gray-500">Competition Type</p>
+              <p className="text-sm text-gray-500">Tipo de Competição</p>
             </div>
           </CardContent>
         </Card>

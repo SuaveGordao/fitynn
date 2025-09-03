@@ -54,19 +54,19 @@ export function CompetitionHeader({
       case "upcoming":
         return (
           <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-            Upcoming
+            Em Breve
           </Badge>
         )
       case "active":
         return (
           <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">
-            Active
+            Ativa
           </Badge>
         )
       case "completed":
         return (
           <Badge variant="secondary" className="bg-gray-100 text-gray-700">
-            Completed
+            Concluída
           </Badge>
         )
       default:
@@ -126,13 +126,13 @@ export function CompetitionHeader({
                 <div className="flex items-center space-x-1">
                   <Trophy className="w-4 h-4" />
                   <span>
-                    {competition.type === "weight_loss" ? "Weight Loss" : `${competition.measurement_type} Measurement`}
+                    {competition.type === "weight_loss" ? "Perda de Peso" : `Medida ${competition.measurement_type}`}
                   </span>
                 </div>
                 <span>•</span>
                 <div className="flex items-center space-x-1">
                   <Users className="w-4 h-4" />
-                  <span>{participantCount} participants</span>
+                  <span>{participantCount} participantes</span>
                 </div>
                 <span>•</span>
                 <div className="flex items-center space-x-1">
@@ -148,7 +148,7 @@ export function CompetitionHeader({
                 <Link href={`/groups/${competition.groups.id}`} className="hover:text-emerald-600">
                   {competition.groups.name}
                 </Link>{" "}
-                • Created by {competition.profiles.display_name}
+                • Criado por {competition.profiles.display_name}
               </div>
             </div>
           </div>
@@ -161,13 +161,13 @@ export function CompetitionHeader({
                 className="bg-emerald-600 hover:bg-emerald-700"
               >
                 <UserPlus className="w-4 h-4 mr-2" />
-                {isJoining ? "Joining..." : "Join Competition"}
+                {isJoining ? "Participando..." : "Participar da Competição"}
               </Button>
             )}
 
             {isParticipating && (
               <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">
-                Participating
+                Participando
               </Badge>
             )}
           </div>

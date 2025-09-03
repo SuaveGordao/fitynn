@@ -75,16 +75,18 @@ export function CreateGroupModal({ open, onOpenChange }: CreateGroupModalProps) 
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Create New Group</DialogTitle>
-          <DialogDescription>Start a new fitness competition group and invite your friends to join.</DialogDescription>
+          <DialogTitle>Criar Novo Grupo</DialogTitle>
+          <DialogDescription>
+            Inicie um novo grupo de competição fitness e convide seus amigos para participar.
+          </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Group Name</Label>
+            <Label htmlFor="name">Nome do Grupo</Label>
             <Input
               id="name"
-              placeholder="e.g., Summer Fitness Challenge"
+              placeholder="ex: Desafio Fitness de Verão"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
@@ -93,10 +95,10 @@ export function CreateGroupModal({ open, onOpenChange }: CreateGroupModalProps) 
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="description">Description (Optional)</Label>
+            <Label htmlFor="description">Descrição (Opcional)</Label>
             <Textarea
               id="description"
-              placeholder="Describe your group's goals and rules..."
+              placeholder="Descreva os objetivos e regras do seu grupo..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={3}
@@ -108,10 +110,10 @@ export function CreateGroupModal({ open, onOpenChange }: CreateGroupModalProps) 
 
           <div className="flex justify-end space-x-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)} disabled={isLoading}>
-              Cancel
+              Cancelar
             </Button>
             <Button type="submit" disabled={isLoading || !name.trim()} className="bg-emerald-600 hover:bg-emerald-700">
-              {isLoading ? "Creating..." : "Create Group"}
+              {isLoading ? "Criando..." : "Criar Grupo"}
             </Button>
           </div>
         </form>

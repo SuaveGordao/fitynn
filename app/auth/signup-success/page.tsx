@@ -15,17 +15,17 @@ export default function SignUpSuccessPage() {
             <div className="mx-auto w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center">
               <CheckCircle className="w-8 h-8 text-emerald-600" />
             </div>
-            <CardTitle className="text-2xl">Check Your Email</CardTitle>
-            <CardDescription>We've sent you a confirmation link to complete your registration</CardDescription>
+            <CardTitle className="text-2xl">Verifique seu E-mail</CardTitle>
+            <CardDescription>Enviamos um link de confirmação para completar seu cadastro</CardDescription>
           </CardHeader>
           <CardContent className="text-center space-y-4">
             <p className="text-sm text-gray-600">
-              Please check your email and click the confirmation link to activate your account. Once confirmed, you can
-              start creating and joining fitness competitions!
+              Por favor, verifique seu e-mail e clique no link de confirmação para ativar sua conta. Após a confirmação,
+              você poderá começar a criar e participar de competições fitness!
             </p>
             <div className="pt-4">
               <Link href="/auth/login" className="text-emerald-600 hover:text-emerald-700 font-medium text-sm">
-                Back to Sign In
+                Voltar para Entrar
               </Link>
             </div>
           </CardContent>

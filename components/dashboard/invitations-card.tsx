@@ -72,7 +72,7 @@ export function InvitationsCard({ invitations }: InvitationsCardProps) {
       <CardHeader>
         <CardTitle className="flex items-center space-x-2 text-blue-900">
           <Mail className="w-5 h-5" />
-          <span>Group Invitations</span>
+          <span>Convites de Grupos</span>
           <Badge variant="secondary" className="bg-blue-100 text-blue-700">
             {invitations.length}
           </Badge>
@@ -89,7 +89,7 @@ export function InvitationsCard({ invitations }: InvitationsCardProps) {
                 )}
                 <div className="flex items-center space-x-1 text-xs text-gray-500">
                   <Clock className="w-3 h-3" />
-                  <span>Expires {new Date(invitation.expires_at).toLocaleDateString()}</span>
+                  <span>Expira em {new Date(invitation.expires_at).toLocaleDateString()}</span>
                 </div>
               </div>
 
@@ -101,7 +101,7 @@ export function InvitationsCard({ invitations }: InvitationsCardProps) {
                   className="bg-emerald-600 hover:bg-emerald-700"
                 >
                   <Check className="w-4 h-4 mr-1" />
-                  Accept
+                  Aceitar
                 </Button>
                 <Button
                   size="sm"
@@ -111,7 +111,7 @@ export function InvitationsCard({ invitations }: InvitationsCardProps) {
                   className="border-red-200 text-red-600 hover:bg-red-50"
                 >
                   <X className="w-4 h-4 mr-1" />
-                  Decline
+                  Recusar
                 </Button>
               </div>
             </div>

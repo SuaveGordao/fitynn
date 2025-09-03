@@ -16,11 +16,11 @@ export default function HomePage() {
           <div className="flex items-center space-x-4">
             <Link href="/auth/login">
               <Button variant="ghost" className="text-gray-600 hover:text-emerald-600">
-                Sign In
+                Entrar
               </Button>
             </Link>
             <Link href="/auth/signup">
-              <Button className="bg-emerald-600 hover:bg-emerald-700">Get Started</Button>
+              <Button className="bg-emerald-600 hover:bg-emerald-700">Começar</Button>
             </Link>
           </div>
         </nav>
@@ -29,17 +29,15 @@ export default function HomePage() {
       {/* Hero Section */}
       <main className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <h2 className="text-5xl font-bold text-gray-900 mb-6 text-balance">
-            Compete, Motivate, and Transform Together
-          </h2>
+          <h2 className="text-5xl font-bold text-gray-900 mb-6 text-balance">Compita, Motive e Transforme-se Juntos</h2>
           <p className="text-xl text-gray-600 mb-8 text-pretty">
-            Join fitness competitions with friends, track your progress, and achieve your health goals through friendly
-            competition and mutual support.
+            Participe de competições fitness com amigos, acompanhe seu progresso e alcance seus objetivos de saúde
+            através de competição amigável e apoio mútuo.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/auth/signup">
               <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 h-12 px-8">
-                Start Your Journey
+                Comece sua Jornada
               </Button>
             </Link>
             <Link href="/auth/login">
@@ -48,7 +46,7 @@ export default function HomePage() {
                 variant="outline"
                 className="h-12 px-8 border-emerald-200 text-emerald-700 hover:bg-emerald-50 bg-transparent"
               >
-                Sign In
+                Entrar
               </Button>
             </Link>
           </div>
@@ -61,9 +59,10 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto">
                 <Users className="w-6 h-6 text-emerald-600" />
               </div>
-              <h3 className="font-semibold text-gray-900">Group Competitions</h3>
+              <h3 className="font-semibold text-gray-900">Competições em Grupo</h3>
               <p className="text-sm text-gray-600">
-                Create or join fitness groups and compete with friends in weight loss and measurement challenges.
+                Crie ou participe de grupos fitness e compita com amigos em desafios de perda de peso e medidas
+                corporais.
               </p>
             </CardContent>
           </Card>
@@ -73,9 +72,10 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
                 <Target className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="font-semibold text-gray-900">Goal Tracking</h3>
+              <h3 className="font-semibold text-gray-900">Acompanhamento de Metas</h3>
               <p className="text-sm text-gray-600">
-                Set specific targets for weight loss or body measurements and track your progress over time.
+                Defina objetivos específicos para perda de peso ou medidas corporais e acompanhe seu progresso ao longo
+                do tempo.
               </p>
             </CardContent>
           </Card>
@@ -85,9 +85,9 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto">
                 <TrendingUp className="w-6 h-6 text-emerald-600" />
               </div>
-              <h3 className="font-semibold text-gray-900">Progress Analytics</h3>
+              <h3 className="font-semibold text-gray-900">Análise de Progresso</h3>
               <p className="text-sm text-gray-600">
-                Visualize your journey with detailed charts and rankings to stay motivated.
+                Visualize sua jornada com gráficos detalhados e rankings para se manter motivado.
               </p>
             </CardContent>
           </Card>
@@ -97,9 +97,9 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto">
                 <Trophy className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="font-semibold text-gray-900">Social Feed</h3>
+              <h3 className="font-semibold text-gray-900">Feed Social</h3>
               <p className="text-sm text-gray-600">
-                Share achievements, photos, and encourage each other through an integrated social feed.
+                Compartilhe conquistas, fotos e encoraje uns aos outros através de um feed social integrado.
               </p>
             </CardContent>
           </Card>
@@ -107,14 +107,14 @@ export default function HomePage() {
 
         {/* CTA Section */}
         <div className="text-center bg-white rounded-2xl p-12 shadow-lg">
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">Ready to Start Competing?</h3>
+          <h3 className="text-3xl font-bold text-gray-900 mb-4">Pronto para Começar a Competir?</h3>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join thousands of users who are achieving their fitness goals through friendly competition and community
-            support.
+            Junte-se a milhares de usuários que estão alcançando seus objetivos fitness através de competição amigável e
+            apoio da comunidade.
           </p>
           <Link href="/auth/signup">
             <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 h-12 px-8">
-              Create Your Account
+              Criar sua Conta
             </Button>
           </Link>
         </div>

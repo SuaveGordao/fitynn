@@ -24,7 +24,7 @@ export function CompetitionTabs({ competition, participants, posts, userParticip
   return (
     <Tabs defaultValue="dashboard" className="space-y-6">
       <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+        <TabsTrigger value="dashboard">Painel</TabsTrigger>
         <TabsTrigger value="ranking">Ranking</TabsTrigger>
         <TabsTrigger value="feed">Feed</TabsTrigger>
       </TabsList>

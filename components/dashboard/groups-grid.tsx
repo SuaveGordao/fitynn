@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Users, Trophy, Calendar, Settings } from "lucide-react"
 import Link from "next/link"
+import { useTranslation } from "react-i18next"
 
 interface Group {
   id: string
@@ -20,6 +21,8 @@ interface GroupsGridProps {
 }
 
 export function GroupsGrid({ groups }: GroupsGridProps) {
+  const { t } = useTranslation()
+
   if (groups.length === 0) {
     return (
       <Card className="text-center py-12 border-dashed border-2 border-gray-200">
@@ -28,8 +31,8 @@ export function GroupsGrid({ groups }: GroupsGridProps) {
             <Users className="w-8 h-8 text-gray-400" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">No Groups Yet</h3>
-            <p className="text-gray-600 mb-4">Create your first group to start competing with friends!</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">{t("noGroupsYet")}</h3>
+            <p className="text-gray-600 mb-4">{t("createFirstGroup")}</p>
           </div>
         </CardContent>
       </Card>
@@ -54,7 +57,7 @@ export function GroupsGrid({ groups }: GroupsGridProps) {
                 </div>
                 {isAdmin && (
                   <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">
-                    Admin
+                    {t("admin")}
                   </Badge>
                 )}
               </div>
@@ -64,17 +67,21 @@ export function GroupsGrid({ groups }: GroupsGridProps) {
               <div className="flex items-center justify-between text-sm text-gray-600">
                 <div className="flex items-center space-x-1">
                   <Users className="w-4 h-4" />
-                  <span>{memberCount} members</span>
+                  <span>
+                    {memberCount} {t("members")}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <Trophy className="w-4 h-4" />
-                  <span>{competitionCount} competitions</span>
+                  <span>
+                    {competitionCount} {t("competitions")}
+                  </span>
                 </div>
               </div>
 
               <div className="flex items-center space-x-2">
                 <Link href={`/groups/${group.id}`} className="flex-1">
-                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700">View Group</Button>
+                  <Button className="w-full bg-emerald-600 hover:bg-emerald-700">{t("viewGroup")}</Button>
                 </Link>
                 {isAdmin && (
                   <Link href={`/groups/${group.id}/settings`}>
@@ -88,7 +95,9 @@ export function GroupsGrid({ groups }: GroupsGridProps) {
               <div className="text-xs text-gray-500">
                 <div className="flex items-center space-x-1">
                   <Calendar className="w-3 h-3" />
-                  <span>Created {new Date(group.created_at).toLocaleDateString()}</span>
+                  <span>
+                    {t("createdOn")} {new Date(group.created_at).toLocaleDateString()}
+                  </span>
                 </div>
               </div>
             </CardContent>

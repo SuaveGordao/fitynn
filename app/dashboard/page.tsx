@@ -47,7 +47,7 @@ export default async function DashboardPage() {
         {/* Groups Section */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-gray-900">Your Groups</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Seus Grupos</h2>
           </div>
           <GroupsGrid groups={groups || []} />
         </div>

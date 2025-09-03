@@ -48,19 +48,19 @@ export function CompetitionsSection({ competitions, groupId, userRole }: Competi
       case "upcoming":
         return (
           <Badge variant="secondary" className="bg-blue-100 text-blue-700">
-            Upcoming
+            Em Breve
           </Badge>
         )
       case "active":
         return (
           <Badge variant="secondary" className="bg-emerald-100 text-emerald-700">
-            Active
+            Ativa
           </Badge>
         )
       case "completed":
         return (
           <Badge variant="secondary" className="bg-gray-100 text-gray-700">
-            Completed
+            Concluída
           </Badge>
         )
       default:
@@ -79,11 +79,11 @@ export function CompetitionsSection({ competitions, groupId, userRole }: Competi
     <>
       <div className="space-y-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-gray-900">Competitions</h2>
+          <h2 className="text-2xl font-bold text-gray-900">Competições</h2>
           {isAdmin && (
             <Button onClick={() => setShowCreateModal(true)} className="bg-emerald-600 hover:bg-emerald-700">
               <Plus className="w-4 h-4 mr-2" />
-              Create Competition
+              Criar Competição
             </Button>
           )}
         </div>
@@ -95,11 +95,11 @@ export function CompetitionsSection({ competitions, groupId, userRole }: Competi
                 <Trophy className="w-8 h-8 text-gray-400" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">No Competitions Yet</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Nenhuma Competição Ainda</h3>
                 <p className="text-gray-600 mb-4">
                   {isAdmin
-                    ? "Create your first competition to get started!"
-                    : "Wait for an admin to create the first competition."}
+                    ? "Crie sua primeira competição para começar!"
+                    : "Aguarde um admin criar a primeira competição."}
                 </p>
               </div>
             </CardContent>
@@ -130,22 +130,22 @@ export function CompetitionsSection({ competitions, groupId, userRole }: Competi
                   <CardContent className="space-y-4">
                     <div className="space-y-2 text-sm text-gray-600">
                       <div className="flex items-center justify-between">
-                        <span>Type:</span>
+                        <span>Tipo:</span>
                         <span className="font-medium">
                           {competition.type === "weight_loss"
-                            ? "Weight Loss"
-                            : `${competition.measurement_type} Measurement`}
+                            ? "Perda de Peso"
+                            : `Medida ${competition.measurement_type}`}
                         </span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span>Participants:</span>
+                        <span>Participantes:</span>
                         <div className="flex items-center space-x-1">
                           <Users className="w-3 h-3" />
                           <span className="font-medium">{participantCount}</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span>Duration:</span>
+                        <span>Duração:</span>
                         <div className="flex items-center space-x-1">
                           <Calendar className="w-3 h-3" />
                           <span className="font-medium">
@@ -157,11 +157,11 @@ export function CompetitionsSection({ competitions, groupId, userRole }: Competi
                     </div>
 
                     <Link href={`/competitions/${competition.id}`}>
-                      <Button className="w-full bg-emerald-600 hover:bg-emerald-700">View Competition</Button>
+                      <Button className="w-full bg-emerald-600 hover:bg-emerald-700">Ver Competição</Button>
                     </Link>
 
                     <div className="text-xs text-gray-500">
-                      Created by {competition.profiles.display_name} on{" "}
+                      Criado por {competition.profiles.display_name} em{" "}
                       {new Date(competition.created_at).toLocaleDateString()}
                     </div>
                   </CardContent>

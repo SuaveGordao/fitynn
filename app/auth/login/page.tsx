@@ -43,22 +43,22 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-emerald-600 mb-2">Fitynn</h1>
-          <p className="text-gray-600">Welcome back to your fitness journey</p>
+          <p className="text-gray-600">Bem-vindo de volta à sua jornada fitness</p>
         </div>
 
         <Card className="shadow-lg border-0">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center">Sign In</CardTitle>
-            <CardDescription className="text-center">Enter your credentials to access your account</CardDescription>
+            <CardTitle className="text-2xl text-center">Entrar</CardTitle>
+            <CardDescription className="text-center">Digite suas credenciais para acessar sua conta</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">E-mail</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder="seu@email.com"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -66,7 +66,7 @@ export default function LoginPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Senha</Label>
                 <Input
                   id="password"
                   type="password"
@@ -80,14 +80,14 @@ export default function LoginPage() {
                 <div className="p-3 text-sm text-red-600 bg-red-50 rounded-md border border-red-200">{error}</div>
               )}
               <Button type="submit" className="w-full h-11 bg-emerald-600 hover:bg-emerald-700" disabled={isLoading}>
-                {isLoading ? "Signing in..." : "Sign In"}
+                {isLoading ? "Entrando..." : "Entrar"}
               </Button>
             </form>
 
             <div className="mt-6 text-center text-sm">
-              Don't have an account?{" "}
+              Não tem uma conta?{" "}
               <Link href="/auth/signup" className="text-emerald-600 hover:text-emerald-700 font-medium">
-                Sign up
+                Cadastre-se
               </Link>
             </div>
           </CardContent>
