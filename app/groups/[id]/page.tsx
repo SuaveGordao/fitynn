@@ -25,8 +25,7 @@ export default async function GroupPage({ params }: GroupPageProps) {
     .from("groups")
     .select(`
       *,
-      group_members!inner(role),
-      profiles!groups_created_by_fkey(display_name)
+      group_members!inner(role)
     `)
     .eq("id", id)
     .eq("group_members.user_id", user.id)
@@ -50,8 +49,7 @@ export default async function GroupPage({ params }: GroupPageProps) {
     .from("competitions")
     .select(`
       *,
-      competition_participants(count),
-      profiles!competitions_created_by_fkey(display_name)
+      competition_participants(count)
     `)
     .eq("group_id", id)
     .order("created_at", { ascending: false })
