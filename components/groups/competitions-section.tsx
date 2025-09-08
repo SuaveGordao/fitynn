@@ -7,6 +7,7 @@ import { Trophy, Plus, Calendar, Users, Target, Scale } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { CreateCompetitionModal } from "./create-competition-modal"
+import { EditCompetitionModal } from "./edit-competition-modal"
 
 interface Competition {
   id: string
@@ -31,6 +32,7 @@ interface CompetitionsSectionProps {
 
 export function CompetitionsSection({ competitions, groupId, userRole }: CompetitionsSectionProps) {
   const [showCreateModal, setShowCreateModal] = useState(false)
+  const [editing, setEditing] = useState<Competition | null>(null)
   const isAdmin = userRole === "admin"
 
   const getCompetitionStatus = (startDate: string, endDate: string) => {
@@ -156,9 +158,16 @@ export function CompetitionsSection({ competitions, groupId, userRole }: Competi
                       </div>
                     </div>
 
-                    <Link href={`/competitions/${competition.id}`}>
-                      <Button className="w-full bg-emerald-600 hover:bg-emerald-700">Ver Competição</Button>
-                    </Link>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Link href={`/competitions/${competition.id}`}>
+                        <Button className="w-full bg-emerald-600 hover:bg-emerald-700">Ver Competição</Button>
+                      </Link>
+                      {isAdmin && (
+                        <Button variant="outline" onClick={() => setEditing(competition)}>
+                          Editar
+                        </Button>
+                      )}
+                    </div>
 
                     <div className="text-xs text-gray-500">
                       Criado por {competition.profiles.display_name} em{" "}
@@ -173,6 +182,13 @@ export function CompetitionsSection({ competitions, groupId, userRole }: Competi
       </div>
 
       <CreateCompetitionModal open={showCreateModal} onOpenChange={setShowCreateModal} groupId={groupId} />
+      {editing && (
+        <EditCompetitionModal
+          open={!!editing}
+          onOpenChange={(open) => (!open ? setEditing(null) : null)}
+          competition={{ id: editing.id, type: editing.type, measurement_type: editing.measurement_type }}
+        />
+      )}
     </>
   )
 }
