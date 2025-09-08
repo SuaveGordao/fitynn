@@ -5,11 +5,11 @@ import { CompetitionsSection } from "@/components/groups/competitions-section"
 import { MembersSection } from "@/components/groups/members-section"
 
 interface GroupPageProps {
-  params: Promise<{ id: string }>
+  params: { id: string }
 }
 
 export default async function GroupPage({ params }: GroupPageProps) {
-  const { id } = await params
+  const { id } = params
   const supabase = await createClient()
 
   const {
