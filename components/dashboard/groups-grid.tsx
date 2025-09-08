@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Users, Trophy, Calendar, Settings } from "lucide-react"
 import Link from "next/link"
+import { useState } from "react"
+import { CreateGroupModal } from "./create-group-modal"
 import { useTranslation } from "react-i18next"
 
 interface Group {
@@ -22,6 +24,7 @@ interface GroupsGridProps {
 
 export function GroupsGrid({ groups }: GroupsGridProps) {
   const { t } = useTranslation()
+  const [showCreateGroup, setShowCreateGroup] = useState(false)
 
   if (groups.length === 0) {
     return (
@@ -40,8 +43,21 @@ export function GroupsGrid({ groups }: GroupsGridProps) {
   }
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {groups.map((group) => {
+    <>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Card especial: Criar Novo Grupo */}
+        <Card
+          className="hover:shadow-lg transition-shadow border-2 border-dashed border-emerald-200 bg-emerald-50/40 cursor-pointer flex items-center justify-center"
+          onClick={() => setShowCreateGroup(true)}
+        >
+          <CardHeader className="text-center">
+            <CardTitle className="text-emerald-700 flex items-center justify-center gap-2">
+              <span>+ {t("createNewGroup") || "Criar Novo Grupo"}</span>
+            </CardTitle>
+          </CardHeader>
+        </Card>
+
+        {groups.map((group) => {
         const memberCount = group.group_members.length
         const competitionCount = group.competitions?.[0]?.count || 0
         const userRole = group.group_members[0]?.role
@@ -103,7 +119,10 @@ export function GroupsGrid({ groups }: GroupsGridProps) {
             </CardContent>
           </Card>
         )
-      })}
-    </div>
+        })}
+      </div>
+
+      <CreateGroupModal open={showCreateGroup} onOpenChange={setShowCreateGroup} />
+    </>
   )
 }
